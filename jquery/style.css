@@ -1,0 +1,598 @@
+/* WordPress Admin-inspired Setup Wizard Styles */
+:root {
+  --wp-blue: #0073aa;
+  --wp-blue-dark: #005a87;
+  --wp-green: #00a32a;
+  --wp-red: #d63638;
+  --wp-orange: #f56e28;
+  --wp-gray-100: #f6f7f7;
+  --wp-gray-200: #dcdcde;
+  --wp-gray-300: #c3c4c7;
+  --wp-gray-400: #a7aaad;
+  --wp-gray-500: #8c8f94;
+  --wp-gray-600: #646970;
+  --wp-gray-700: #50575e;
+  --wp-gray-800: #3c434a;
+  --wp-gray-900: #1d2327;
+  --wp-white: #ffffff;
+  --border-radius: 4px;
+  --box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  --box-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --transition: all 0.15s ease-in-out;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  line-height: 1.4em;
+  color: var(--wp-gray-800);
+  background: var(--wp-gray-100);
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Main Container */
+.wp-setup-wizard {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--wp-white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header */
+.wizard-header {
+  background: linear-gradient(135deg, var(--wp-blue) 0%, var(--wp-blue-dark) 100%);
+  color: var(--wp-white);
+  padding: 30px;
+  text-align: center;
+}
+
+.wizard-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.wizard-header p {
+  margin: 0 0 30px 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-steps .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex: 1;
+}
+
+.progress-steps .step:hover {
+  transform: translateY(-2px);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--wp-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.step.active .step-number {
+  background: var(--wp-white);
+  color: var(--wp-blue);
+  border-color: var(--wp-white);
+}
+
+.step.completed .step-number {
+  background: var(--wp-green);
+  color: var(--wp-white);
+  border-color: var(--wp-green);
+}
+
+.step.completed .step-number:before {
+  content: "✓";
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.8;
+  text-align: center;
+  max-width: 100px;
+}
+
+.step.active .step-label,
+.step.completed .step-label {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--wp-white);
+  transition: width 0.3s ease;
+}
+
+/* Content Area */
+.wizard-content {
+  padding: 40px;
+  min-height: 500px;
+}
+
+.step-content {
+  display: none;
+}
+
+.step-content.active {
+  display: block;
+}
+
+.step-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.step-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--wp-gray-900);
+  margin: 0 0 8px 0;
+}
+
+.step-header p {
+  font-size: 16px;
+  color: var(--wp-gray-600);
+  margin: 0;
+}
+
+/* Options Grid */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.option-card,
+.plugin-card {
+  border: 1px solid var(--wp-gray-200);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  background: var(--wp-white);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.option-card:hover,
+.plugin-card:hover,
+.option-card.hover,
+.plugin-card.hover {
+  border-color: var(--wp-blue);
+  box-shadow: var(--box-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.option-header,
+.plugin-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.option-header input[type="checkbox"],
+.plugin-header input[type="checkbox"] {
+  margin-right: 12px;
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--wp-blue);
+}
+
+.option-header label,
+.plugin-header label {
+  cursor: pointer;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.option-description,
+.plugin-description {
+  color: var(--wp-gray-600);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Plugin Cards */
+.plugins-list {
+  margin-top: 30px;
+}
+
+.plugin-card {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 20px;
+}
+
+.plugin-icon {
+  margin-right: 15px;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wp-gray-100);
+  border-radius: var(--border-radius);
+}
+
+.plugin-info {
+  flex: 1;
+}
+
+.plugin-meta {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--wp-gray-500);
+}
+
+.plugin-version {
+  margin-right: 15px;
+}
+
+.plugin-rating {
+  color: var(--wp-orange);
+}
+
+/* Finish Step */
+.finish-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--wp-green);
+  color: var(--wp-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.finish-content h2 {
+  font-size: 28px;
+  color: var(--wp-gray-900);
+  margin: 0 0 15px 0;
+}
+
+.success-message {
+  font-size: 16px;
+  color: var(--wp-gray-600);
+  margin: 0 0 30px 0;
+  line-height: 1.5;
+}
+
+.setup-summary {
+  background: var(--wp-gray-100);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin: 30px 0;
+  text-align: left;
+}
+
+.setup-summary h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: var(--wp-gray-900);
+  text-align: center;
+}
+
+.summary-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.summary-section h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wp-gray-800);
+}
+
+.summary-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.summary-section li {
+  padding: 4px 0;
+  font-size: 13px;
+  color: var(--wp-gray-600);
+  position: relative;
+  padding-left: 15px;
+}
+
+.summary-section li:before {
+  content: "•";
+  color: var(--wp-blue);
+  position: absolute;
+  left: 0;
+}
+
+.finish-actions {
+  margin-top: 30px;
+}
+
+.finish-actions .button {
+  margin: 0 10px;
+}
+
+/* Navigation */
+.wizard-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: var(--wp-gray-100);
+  border-top: 1px solid var(--wp-gray-200);
+}
+
+.nav-center {
+  font-size: 14px;
+  color: var(--wp-gray-600);
+  font-weight: 500;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 2.15384615;
+  min-height: 30px;
+  margin: 0;
+  padding: 0 10px;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--border-radius);
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+  font-weight: 400;
+  transition: var(--transition);
+}
+
+.button-primary {
+  background: var(--wp-blue);
+  border-color: var(--wp-blue);
+  color: var(--wp-white);
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--wp-blue-dark);
+  border-color: var(--wp-blue-dark);
+  color: var(--wp-white);
+}
+
+.button-secondary {
+  background: var(--wp-white);
+  border-color: var(--wp-gray-300);
+  color: var(--wp-gray-700);
+}
+
+.button-secondary:hover:not(:disabled) {
+  background: var(--wp-gray-100);
+  border-color: var(--wp-gray-400);
+  color: var(--wp-gray-800);
+}
+
+.button:disabled {
+  color: var(--wp-gray-400) !important;
+  border-color: var(--wp-gray-200) !important;
+  background: var(--wp-gray-100) !important;
+  cursor: default;
+}
+
+.button-hero {
+  font-size: 14px;
+  height: 46px;
+  line-height: 44px;
+  padding: 0 36px;
+  font-weight: 500;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--wp-gray-200);
+  border-top: 3px solid var(--wp-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner p {
+  color: var(--wp-gray-600);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  .wizard-content {
+    padding: 20px;
+  }
+  
+  .wizard-header {
+    padding: 20px;
+  }
+  
+  .wizard-header h1 {
+    font-size: 24px;
+  }
+  
+  .options-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .wizard-navigation {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .nav-center {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .step-label {
+    font-size: 11px;
+    max-width: 80px;
+  }
+  
+  .summary-sections {
+    grid-template-columns: 1fr;
+  }
+  
+  .finish-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .plugin-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .plugin-icon {
+    margin: 0 auto 10px;
+  }
+  
+  .plugin-header {
+    justify-content: center;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.button:focus,
+input[type="checkbox"]:focus,
+.step:focus {
+  outline: 2px solid var(--wp-blue);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .option-card,
+  .plugin-card {
+    border-width: 2px;
+  }
+  
+  .button {
+    border-width: 2px;
+  }
+}

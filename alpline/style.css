@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* WordPress Admin Styles */
+.wp-admin-notice {
+  @apply border-l-4 p-4 my-4 bg-white shadow-sm;
+}
+
+.wp-admin-notice.notice-success {
+  @apply border-green-500;
+}
+
+.wp-admin-notice.notice-error {
+  @apply border-red-500;
+}
+
+.wp-admin-notice.notice-warning {
+  @apply border-yellow-500;
+}
+
+.wp-admin-notice.notice-info {
+  @apply border-blue-500;
+}
+
+/* Custom checkbox styling */
+.wp-checkbox {
+  @apply w-4 h-4 text-wp-blue bg-gray-100 border-gray-300 rounded focus:ring-wp-blue focus:ring-2;
+}
+
+/* Progress bar animation */
+.progress-bar {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Fade transitions */
+.fade-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.fade-leave {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-leave-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin;
+}
+
+/* WordPress button styles */
+.wp-button-primary {
+  @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-wp-blue hover:bg-wp-blue-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-wp-blue transition-colors duration-200;
+}
+
+.wp-button-secondary {
+  @apply inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-wp-blue transition-colors duration-200;
+}
+
+.wp-button-success {
+  @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200;
+}

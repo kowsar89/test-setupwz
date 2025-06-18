@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WordPress Plugin Setup Wizard</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="wp-setup-wizard">
+        <!-- Header -->
+        <div class="wizard-header">
+          <h1>Plugin Setup Wizard</h1>
+          <p>Configure your plugin settings in just a few steps</p>
+          
+          <!-- Progress Bar -->
+          <div class="progress-bar">
+            <div class="progress-steps">
+              <div class="step active" data-step="1">
+                <span class="step-number">1</span>
+                <span class="step-label">Cache Options</span>
+              </div>
+              <div class="step" data-step="2">
+                <span class="step-number">2</span>
+                <span class="step-label">Minify Options</span>
+              </div>
+              <div class="step" data-step="3">
+                <span class="step-number">3</span>
+                <span class="step-label">Plugin Installer</span>
+              </div>
+              <div class="step" data-step="4">
+                <span class="step-number">4</span>
+                <span class="step-label">Finish</span>
+              </div>
+            </div>
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Step Content -->
+        <div class="wizard-content">
+          
+          <!-- Step 1: Cache Options -->
+          <div class="step-content active" id="step-1">
+            <div class="step-header">
+              <h2>Cache Configuration</h2>
+              <p>Enable caching options to improve your site's performance</p>
+            </div>
+            
+            <div class="options-grid">
+              <div class="option-card">
+                <div class="option-header">
+                  <input type="checkbox" id="page-cache" name="cache[]" value="page_cache">
+                  <label for="page-cache">
+                    <strong>Enable Page Cache</strong>
+                  </label>
+                </div>
+                <p class="option-description">Cache entire pages to reduce server load and improve loading times</p>
+              </div>
+              
+              <div class="option-card">
+                <div class="option-header">
+                  <input type="checkbox" id="object-cache" name="cache[]" value="object_cache">
+                  <label for="object-cache">
+                    <strong>Enable Object Cache</strong>
+                  </label>
+                </div>
+                <p class="option-description">Cache database queries and computed data for faster response times</p>
+              </div>
+              
+              <div class="option-card">
+                <div class="option-header">
+                  <input type="checkbox" id="browser-cache" name="cache[]" value="browser_cache">
+                  <label for="browser-cache">
+                    <strong>Enable Browser Cache</strong>
+                  </label>
+                </div>
+                <p class="option-description">Set cache headers to reduce repeat downloads for returning visitors</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Minify Options -->
+          <div class="step-content" id="step-2">
+            <div class="step-header">
+              <h2>Minification Settings</h2>
+              <p>Optimize your assets by removing unnecessary code and whitespace</p>
+            </div>
+            
+            <div class="options-grid">
+              <div class="option-card">
+                <div class="option-header">
+                  <input type="checkbox" id="minify-html" name="minify[]" value="minify_html">
+                  <label for="minify-html">
+                    <strong>Minify HTML</strong>
+                  </label>
+                </div>
+                <p class="option-description">Remove unnecessary whitespace and comments from HTML output</p>
+              </div>
+              
+              <div class="option-card">
+                <div class="option-header">
+                  <input type="checkbox" id="minify-css" name="minify[]" value="minify_css">
+                  <label for="minify-css">
+                    <strong>Minify CSS</strong>
+                  </label>
+                </div>
+                <p class="option-description">Compress CSS files by removing whitespace and comments</p>
+              </div>
+              
+              <div class="option-card">
+                <div class="option-header">
+                  <input type="checkbox" id="minify-js" name="minify[]" value="minify_js">
+                  <label for="minify-js">
+                    <strong>Minify JavaScript</strong>
+                  </label>
+                </div>
+                <p class="option-description">Optimize JavaScript files to reduce file size and improve loading</p>
+              </div>
+              
+              <div class="option-card">
+                <div class="option-header">
+                  <input type="checkbox" id="combine-files" name="minify[]" value="combine_files">
+                  <label for="combine-files">
+                    <strong>Combine Files</strong>
+                  </label>
+                </div>
+                <p class="option-description">Merge multiple CSS and JS files to reduce HTTP requests</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Plugin Installer -->
+          <div class="step-content" id="step-3">
+            <div class="step-header">
+              <h2>Recommended Plugins</h2>
+              <p>Install these recommended plugins to enhance your site's functionality</p>
+            </div>
+            
+            <div class="plugins-list">
+              <div class="plugin-card">
+                <div class="plugin-icon">
+                  <span class="dashicon">🔒</span>
+                </div>
+                <div class="plugin-info">
+                  <div class="plugin-header">
+                    <input type="checkbox" id="security-plugin" name="plugins[]" value="security_plugin" checked>
+                    <label for="security-plugin">
+                      <strong>Security Enhancement Plugin</strong>
+                    </label>
+                  </div>
+                  <p class="plugin-description">Protect your site from malicious attacks and security vulnerabilities</p>
+                  <div class="plugin-meta">
+                    <span class="plugin-version">Version: 2.1.0</span>
+                    <span class="plugin-rating">★★★★★ (4.8/5)</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="plugin-card">
+                <div class="plugin-icon">
+                  <span class="dashicon">📊</span>
+                </div>
+                <div class="plugin-info">
+                  <div class="plugin-header">
+                    <input type="checkbox" id="analytics-plugin" name="plugins[]" value="analytics_plugin" checked>
+                    <label for="analytics-plugin">
+                      <strong>Advanced Analytics Plugin</strong>
+                    </label>
+                  </div>
+                  <p class="plugin-description">Track visitor behavior and get detailed insights about your site performance</p>
+                  <div class="plugin-meta">
+                    <span class="plugin-version">Version: 1.5.2</span>
+                    <span class="plugin-rating">★★★★☆ (4.6/5)</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="plugin-card">
+                <div class="plugin-icon">
+                  <span class="dashicon">⚡</span>
+                </div>
+                <div class="plugin-info">
+                  <div class="plugin-header">
+                    <input type="checkbox" id="performance-plugin" name="plugins[]" value="performance_plugin" checked>
+                    <label for="performance-plugin">
+                      <strong>Performance Optimizer</strong>
+                    </label>
+                  </div>
+                  <p class="plugin-description">Additional performance enhancements and speed optimization tools</p>
+                  <div class="plugin-meta">
+                    <span class="plugin-version">Version: 3.2.1</span>
+                    <span class="plugin-rating">★★★★★ (4.9/5)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Finish -->
+          <div class="step-content" id="step-4">
+            <div class="finish-content">
+              <div class="success-icon">
+                <span class="checkmark">✓</span>
+              </div>
+              <h2>Setup Complete!</h2>
+              <p class="success-message">
+                Your plugin has been successfully configured. All settings have been saved and your site is now optimized for better performance.
+              </p>
+              
+              <div class="setup-summary">
+                <h3>Configuration Summary:</h3>
+                <div class="summary-sections">
+                  <div class="summary-section">
+                    <h4>Cache Settings</h4>
+                    <ul id="cache-summary"></ul>
+                  </div>
+                  <div class="summary-section">
+                    <h4>Minification Settings</h4>
+                    <ul id="minify-summary"></ul>
+                  </div>
+                  <div class="summary-section">
+                    <h4>Installed Plugins</h4>
+                    <ul id="plugins-summary"></ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="finish-actions">
+                <a href="/wp-admin/" class="button button-primary button-hero">Go to Dashboard</a>
+                <a href="/wp-admin/options-general.php?page=your-plugin" class="button button-secondary">Plugin Settings</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="wizard-navigation">
+          <button type="button" id="prev-btn" class="button button-secondary" disabled>
+            ← Back
+          </button>
+          
+          <div class="nav-center">
+            <span class="step-indicator">Step <span id="current-step">1</span> of 4</span>
+          </div>
+          
+          <button type="button" id="next-btn" class="button button-primary">
+            Next →
+          </button>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loading-overlay">
+          <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Saving settings...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
