@@ -1,36 +1,29 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
-    <div class="max-w-4xl mx-auto px-4">
-      <!-- Header -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Plugin Setup Wizard</h1>
-        <p class="text-gray-600">Configure your plugin settings in just a few steps</p>
+  <div class="wizard">
+    <div class="wizard__container">
+      <div class="wizard__header">
+        <h1 class="wizard__title">Plugin Setup Wizard</h1>
+        <p class="wizard__description">Configure your plugin settings in just a few steps</p>
       </div>
 
-      <!-- Progress Steps -->
       <ProgressSteps :steps="steps" :current-step="currentStep" />
 
-      <!-- Step Content -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-        <!-- Step 1: Cache Options -->
+      <div class="wizard__content">
         <CacheOptions 
           v-if="currentStep === 1" 
           v-model="formData.cache" 
         />
 
-        <!-- Step 2: Minify Options -->
         <MinifyOptions 
           v-if="currentStep === 2" 
           v-model="formData.minify" 
         />
 
-        <!-- Step 3: Plugin Installer -->
         <PluginInstaller 
           v-if="currentStep === 3" 
           v-model="formData.plugins" 
         />
 
-        <!-- Step 4: Finish -->
         <SetupSummary 
           v-if="currentStep === 4" 
           :form-data="formData"
@@ -38,19 +31,18 @@
         />
       </div>
 
-      <!-- Navigation Buttons -->
-      <div class="flex justify-between mt-8" v-if="currentStep < 4">
+      <div class="wizard__navigation" v-if="currentStep < 4">
         <button 
           @click="previousStep"
           :disabled="currentStep === 1"
-          class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-wordpress-blue disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          class="wizard__button wizard__button--secondary"
         >
           ← Previous
         </button>
         <button 
           @click="nextStep"
           :disabled="isLoading"
-          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-wordpress-blue hover:bg-wordpress-blue-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-wordpress-blue disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          class="wizard__button wizard__button--primary"
         >
           <span v-if="isLoading">Saving...</span>
           <span v-else>{{ currentStep === 3 ? 'Finish Setup' : 'Next →' }}</span>

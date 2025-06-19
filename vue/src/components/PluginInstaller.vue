@@ -1,30 +1,30 @@
 <template>
-  <div class="space-y-6">
-    <div class="text-center mb-6">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">Recommended Plugins</h2>
-      <p class="text-gray-600">Install these recommended plugins to enhance your website</p>
+  <div class="plugins">
+    <div class="plugins__header">
+      <h2 class="plugins__title">Recommended Plugins</h2>
+      <p class="plugins__description">Install these recommended plugins to enhance your website</p>
     </div>
-    <div class="space-y-4">
+    <div class="plugins__list">
       <div 
         v-for="plugin in recommendedPlugins" 
         :key="plugin.slug"
-        class="flex items-start space-x-4 p-6 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+        class="plugin-card"
       >
         <input 
           type="checkbox" 
           :checked="modelValue[plugin.slug]"
           @change="updateValue(plugin.slug, $event.target.checked)"
-          class="mt-1 h-4 w-4 text-wordpress-blue focus:ring-wordpress-blue border-gray-300 rounded"
+          class="plugin-card__checkbox"
         >
-        <div class="flex-1">
-          <div class="flex items-center space-x-3 mb-2">
-            <h3 class="text-lg font-medium text-gray-900">{{ plugin.name }}</h3>
-            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Recommended</span>
+        <div class="plugin-card__content">
+          <div class="plugin-card__header">
+            <h3 class="plugin-card__name">{{ plugin.name }}</h3>
+            <span class="plugin-card__badge">Recommended</span>
           </div>
-          <p class="text-gray-600 mb-3">{{ plugin.description }}</p>
-          <div class="flex items-center space-x-4 text-sm text-gray-500">
-            <span>⭐ {{ plugin.rating }}/5</span>
-            <span>{{ plugin.downloads }} downloads</span>
+          <p class="plugin-card__description">{{ plugin.description }}</p>
+          <div class="plugin-card__stats">
+            <span class="plugin-card__rating">⭐ {{ plugin.rating }}/5</span>
+            <span class="plugin-card__downloads">{{ plugin.downloads }} downloads</span>
           </div>
         </div>
       </div>

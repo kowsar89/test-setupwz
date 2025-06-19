@@ -1,36 +1,36 @@
 <template>
-  <div class="text-center space-y-6">
-    <div class="mb-8">
-      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <div class="summary">
+    <div class="summary__success">
+      <div class="summary__icon">
+        <svg class="summary__checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
         </svg>
       </div>
-      <h2 class="text-3xl font-bold text-gray-900 mb-2">Setup Complete!</h2>
-      <p class="text-gray-600">Your plugin has been configured successfully</p>
+      <h2 class="summary__title">Setup Complete!</h2>
+      <p class="summary__message">Your plugin has been configured successfully</p>
     </div>
 
-    <div class="bg-gray-50 rounded-lg p-6 text-left max-w-2xl mx-auto">
-      <h3 class="text-lg font-medium text-gray-900 mb-4">Configuration Summary:</h3>
-      <div class="space-y-3 text-sm">
-        <div>
-          <span class="font-medium text-gray-700">Cache Options:</span>
-          <span class="ml-2 text-gray-600">{{ enabledCacheOptions }}</span>
+    <div class="summary__config">
+      <h3 class="summary__config-title">Configuration Summary:</h3>
+      <div class="summary__config-list">
+        <div class="summary__config-item">
+          <span class="summary__config-label">Cache Options:</span>
+          <span class="summary__config-value">{{ enabledCacheOptions }}</span>
         </div>
-        <div>
-          <span class="font-medium text-gray-700">Minify Options:</span>
-          <span class="ml-2 text-gray-600">{{ enabledMinifyOptions }}</span>
+        <div class="summary__config-item">
+          <span class="summary__config-label">Minify Options:</span>
+          <span class="summary__config-value">{{ enabledMinifyOptions }}</span>
         </div>
-        <div>
-          <span class="font-medium text-gray-700">Plugins to Install:</span>
-          <span class="ml-2 text-gray-600">{{ selectedPlugins }}</span>
+        <div class="summary__config-item">
+          <span class="summary__config-label">Plugins to Install:</span>
+          <span class="summary__config-value">{{ selectedPlugins }}</span>
         </div>
       </div>
     </div>
 
     <button 
       @click="$emit('goToDashboard')"
-      class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-wordpress-blue hover:bg-wordpress-blue-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-wordpress-blue transition-colors"
+      class="summary__button"
     >
       Go to Dashboard
     </button>
