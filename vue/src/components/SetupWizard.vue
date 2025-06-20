@@ -9,41 +9,20 @@
       <ProgressSteps :steps="steps" :current-step="currentStep" />
 
       <div class="wizard__content">
-        <CacheOptions 
-          v-if="currentStep === 1" 
-          v-model="formData.cache" 
-        />
+        <CacheOptions v-if="currentStep === 1" v-model="formData.cache" />
 
-        <MinifyOptions 
-          v-if="currentStep === 2" 
-          v-model="formData.minify" 
-        />
+        <MinifyOptions v-if="currentStep === 2" v-model="formData.minify" />
 
-        <PluginInstaller 
-          v-if="currentStep === 3" 
-          v-model="formData.plugins" 
-        />
+        <PluginInstaller v-if="currentStep === 3" v-model="formData.plugins" />
 
-        <SetupSummary 
-          v-if="currentStep === 4" 
-          :form-data="formData"
-          @go-to-dashboard="goToDashboard"
-        />
+        <SetupSummary v-if="currentStep === 4" :form-data="formData" @go-to-dashboard="goToDashboard" />
       </div>
 
       <div class="wizard__navigation" v-if="currentStep < 4">
-        <button 
-          @click="previousStep"
-          :disabled="currentStep === 1"
-          class="wizard__button wizard__button--secondary"
-        >
+        <button @click="previousStep" :disabled="currentStep === 1" class="wizard__button wizard__button--secondary">
           ← Previous
         </button>
-        <button 
-          @click="nextStep"
-          :disabled="isLoading"
-          class="wizard__button wizard__button--primary"
-        >
+        <button @click="nextStep" :disabled="isLoading" class="wizard__button wizard__button--primary">
           <span v-if="isLoading">Saving...</span>
           <span v-else>{{ currentStep === 3 ? 'Finish Setup' : 'Next →' }}</span>
         </button>

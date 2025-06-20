@@ -28,10 +28,7 @@
       </div>
     </div>
 
-    <button 
-      @click="$emit('goToDashboard')"
-      class="summary__button"
-    >
+    <button @click="$emit('goToDashboard')" class="summary__button">
       Go to Dashboard
     </button>
   </div>

@@ -5,17 +5,8 @@
       <p class="options__description">Optimize your website by minifying various file types</p>
     </div>
     <div class="options__grid">
-      <label 
-        v-for="option in minifyOptions" 
-        :key="option.key"
-        class="option-card"
-      >
-        <input 
-          type="checkbox" 
-          :checked="modelValue[option.key]"
-          @change="updateValue(option.key, $event.target.checked)"
-          class="option-card__checkbox"
-        >
+      <label v-for="option in minifyOptions" :key="option.key" class="option-card">
+        <input type="checkbox" :checked="modelValue[option.key]" @change="updateValue(option.key, $event.target.checked)" class="option-card__checkbox">
         <div class="option-card__content">
           <div class="option-card__label">{{ option.label }}</div>
           <div class="option-card__description">{{ option.description }}</div>

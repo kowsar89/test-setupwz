@@ -5,17 +5,8 @@
       <p class="plugins__description">Install these recommended plugins to enhance your website</p>
     </div>
     <div class="plugins__list">
-      <div 
-        v-for="plugin in recommendedPlugins" 
-        :key="plugin.slug"
-        class="plugin-card"
-      >
-        <input 
-          type="checkbox" 
-          :checked="modelValue[plugin.slug]"
-          @change="updateValue(plugin.slug, $event.target.checked)"
-          class="plugin-card__checkbox"
-        >
+      <div v-for="plugin in recommendedPlugins" :key="plugin.slug" class="plugin-card">
+        <input type="checkbox" :checked="modelValue[plugin.slug]" @change="updateValue(plugin.slug, $event.target.checked)" class="plugin-card__checkbox">
         <div class="plugin-card__content">
           <div class="plugin-card__header">
             <h3 class="plugin-card__name">{{ plugin.name }}</h3>
